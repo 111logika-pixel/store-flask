@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ARCHIVE VAULT | Секонд-хенд редких вещей</title>
+    <style>
+        body { font-family: 'Courier New', Courier, monospace; background: #111; color: #fff; padding: 40px; }
+        h1 { border-bottom: 2px solid #fff; padding-bottom: 10px; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { border: 1px solid #333; padding: 20px; background: #1a1a1a; transition: 0.3s; }
+        .card:hover { border-color: #fff; }
+        .brand { font-weight: bold; color: #aaa; text-transform: uppercase; font-size: 0.9em; }
+        .title { font-size: 1.4em; margin: 5px 0; }
+        .season { color: #888; font-style: italic; }
+        .price { font-size: 1.2em; color: #00ff66; margin-top: 15px; }
+        a { color: #fff; text-decoration: none; }
+        .btn { display: inline-block; margin-top: 15px; background: #fff; color: #000; padding: 8px 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>ARCHIVE VAULT // RARE & VINTAGE PIECES</h1>
+    <p>Каталог строго отобранных архивных дропов. Только оригиналы.</p>
+
+    <div class="grid">
+        {% for item in items %}
+        <div class="card">
+            <span class="brand">{{ item.brand }}</span>
+            <div class="title">{{ item.title }}</div>
+            <div class="season">Сезон: {{ item.season }} | Размер: {{ item.size }}</div>
+            <div class="price">${{ "{:,.2f}".format(item.price) }}</div>
+            <a href="/item/{{ item.id }}" class="btn">VIEW DETAILS</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
